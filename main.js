@@ -109,7 +109,7 @@ reviewsRef.on('child_added', (data) => {
 
 function reviewTemplate({fullName, message}) {
   return `
-    <div class='fullName'>${fullName}</div>
+    <div class='fullName'><strong>${fullName}</strong></div>
     <div class='message'>${message}</div>
   `
 }
@@ -174,9 +174,9 @@ reviews.addEventListener('click', (e) => {
  */
 function reviewTemplate({fullName, message}) {
   return `
-    <div class='fullName'>${fullName}</div>
+    <div class='fullName'><strong>${fullName}</strong></div>
     <div class='message'>${message}</div>
-    <button class='edit'>Edit</button>
+    <button class='edit button is-warning'>Edit</button>
     <button class='delete'>Delete</button>
   `
 };
