@@ -45,50 +45,66 @@ var reviews = document.getElementById('reviews');
 var reviewsRef = db.ref('/reviews');
 
 reviewsRef.on('child_added', (data) => {
-
   var li = document.createElement('li')
-  
   li.id = data.key;
   li.innerHTML = reviewTemplate(data.val())
   reviews.appendChild(li);
+  // console.log(data);
+  // const dataF=data.val()
 
-  my_form=document.createElement('FORM');
-  my_form.id='comment_form';
+  // // dataF.forEach(element => {
+  // //   console.log(element)
+  // // });
+  // var li = document.createElement('p')
+  // var a = document.createElement('li')
+  
+  // localStorage.setItem('postId',data.key)
+  // li.id = data.key;
+  // // li.href="./post.html"
+  // li.innerHTML = reviewTemplate(data.val())
+  // reviews.appendChild(li);
+  // a.appendChild(li);
+
+  // my_form=document.createElement('FORM');
+  // my_form.id='comment_form';
   // my_form.method='POST';
   // my_form.action='';
 
-  my_tb=document.createElement('INPUT');
-  my_tb.type='TEXT';
-  my_tb.name='comment';
-  my_tb.placeholder='Say something';
-  my_tb.id='comment'
-  my_form.appendChild(my_tb);
+  // my_tb=document.createElement('INPUT');
+  // my_tb.type='TEXT';
+  // my_tb.name='comment';
+  // my_tb.placeholder='Say something';
+  // my_tb.id='comment'
+  // my_form.appendChild(my_tb);
 
-my_tb=document.createElement('Button');
-my_tb.type='button';
-// my_tb.name='hidden1';
-my_tb.id='submit_comment'
-my_tb.value='Submit';
-my_form.appendChild(my_tb);
-reviews.appendChild(my_form);
-// my_form.submit();
+// my_tb=document.createElement('Button');
+// my_tb.type='button';
+// // my_tb.name='hidden1';
+// my_tb.id='submit_comment'
+// my_tb.value='Submit';
+// my_form.action='./post.html'
+// my_form.appendChild(my_tb);
+// reviews.appendChild(my_form);
+// // my_form.submit();
 
 })
 
-var comment = document.getElementById('comment');
-console.log("test 786"+comment)
-var comment_form = document.getElementById('comment_form');
 
-comment_form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  var commentVal = comment.value
 
-  db.ref('comment/' + id).set({
-    text: comment.value,
-    message: message.value
-  });
-  comment.value = '';
-})
+// var comment = document.getElementById('comment');
+// console.log("test 786"+comment)
+// var comment_form = document.getElementById('comment_form');
+
+// comment_form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   // var commentVal = comment.value
+
+//   db.ref('comment/' + id).set({
+//     text: comment.value,
+//     message: message.value
+//   });
+//   comment.value = '';
+// })
 
 
 function reviewTemplate({fullName, message}) {
@@ -161,8 +177,6 @@ function reviewTemplate({fullName, message}) {
     <div class='fullName'>${fullName}</div>
     <div class='message'>${message}</div>
     <button class='edit'>Edit</button>
-
-
     <button class='delete'>Delete</button>
   `
 };
